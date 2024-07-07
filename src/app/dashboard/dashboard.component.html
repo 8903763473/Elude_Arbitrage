@@ -1,5 +1,5 @@
 <section>
-    <content [class.popOpened]="popup">
+    <content [class.popOpened]="popup || alertTransaction">
         <div class="wallet-container">
             <div class="wallet-icon">
                 <img src="../../assets/icon/Wallet.svg" alt="Wallet Icon">
@@ -8,13 +8,15 @@
             <p>Wallet not connected</p>
         </div>
     </content>
-    <!-- **************************************************POPUP******************************************** -->
+
+
+    <!-- **************************************************POPUP 01******************************************** -->
 
     <div *ngIf="popup" class="popup">
         <div class="overlay"></div>
         <div class="popupIn">
             <div class="popupIn-top">
-                <img src="../../assets/icon/arrowLeft.svg" alt="">
+                <img src="../../assets/icon/arrowLeft.svg" alt="" (click)="popup=false">
                 <ion-label>New Cube</ion-label>
             </div>
 
@@ -48,6 +50,107 @@
                     <span class="popupOption">Reply</span>
                     <span class="popupOption">Flashloan</span>
                 </div><br>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************************************************POPUP 02******************************************** -->
+
+    <div *ngIf="alertTransaction" class="popup2">
+        <div class="modal-box">
+            <ion-label>Do you want to make a transaction ?</ion-label>
+            <div class="buttons">
+                <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+                    <img src="../../assets/icon/tick.svg" alt="">&nbsp;Confirm
+                </ion-button>
+                <ion-button
+                    style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+                    <img src="../../assets/icon/close.svg" alt="">&nbsp;Reject
+                </ion-button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************************************************POPUP 03******************************************** -->
+
+    <div *ngIf="deleteAll" class="popup2">
+        <div class="modal-box">
+            <ion-label><img src="../../assets/icon/delete.svg" alt=""> Delete</ion-label><br>
+            <ion-label>Delete all Cubes <img src="../../assets/icon/question.svg" alt=""></ion-label><br>
+            <div class="buttons" style="margin: 0 !important;">
+                <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+                    <img src="../../assets/icon/tick.svg" alt="">&nbsp;Cancel
+                </ion-button>
+                <ion-button
+                    style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+                    <img src="../../assets/icon/close.svg" alt="">&nbsp;Delete
+                </ion-button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************************************************POPUP 04******************************************** -->
+
+    <div *ngIf="TransactionSetting" class="popup2">
+        <div class="modal-box">
+            <ion-label class="transactionSettingTitle" style="width: 100%;display: flex;align-items: center;justify-content: center;gap: 60px;font-family: Poppins;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+            text-align: left;
+            "><img src="../../assets/icon/Setting.svg" alt=""> Transaction Setting <img
+                    src="../../assets/icon/close-line.svg" alt=""></ion-label><br>
+            <ion-label style="font-family: Poppins;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+            text-align: left;
+            " class="slippage">Slippage Tolerance</ion-label><br>
+            <div class="buttons" style="margin: 0 !important;">
+                <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+                    Auto 3%
+                </ion-button>
+                <ion-button
+                    style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+                    Custom
+                </ion-button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************************************************POPUP 05******************************************** -->
+
+    <div *ngIf="AccountPop" class="Account">
+        <div class="account-box">
+            <div class="account-box-top">
+                <ion-label>ACCOUNT 1 <img src="../../assets/icon/arrow.svg" alt=""> 0878jhhgfhhshsdfh</ion-label>
+            </div>
+            <img src="../../assets/icon/acc-line.svg" alt="">
+
+            <div class="acc-body">
+                <span>New address detail card click here to add your address book</span>
+            </div>
+
+            <div class="acc-bottom">
+                <div class="acc-bottom-in">
+                    <span>Total :</span>
+                    <div class="acc-bottom-right">
+                        <span class="span1" style="color: #898989;">50.548965545</span>
+                        <span class="span2">50.548965545 MATIC</span>
+                    </div>
+                </div>
+                <div class="acc-bottom-in">
+                    <span>Amount + Gas Fee :</span>
+                    <div class="acc-bottom-right">
+                        <span class="span1" style="font-size: 12px;">More amounts</span>
+                        <span class="span2">50.548965545 MATIC</span>
+                    </div>
+                </div>
+                <ion-button class="acc-confirm">CONFIRM</ion-button>
             </div>
         </div>
     </div>
