@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  AuthHeader: boolean = false;
+  dashboardHeader: boolean = false;
+  isMenuOpen: boolean = false;
+  readonly panelOpenState = signal(false);
+  
+  constructor() { }
+
+  ngOnInit() { }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

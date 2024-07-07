@@ -1,0 +1,175 @@
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+
+body {
+    background-color: #0b0c10;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-image: url('../../assets/backgroundimage/authentication.png') !important;
+    background-position: center center;
+    max-width: 100% !important;
+    width: 100%;
+    margin: 0 !important;
+    background-size: 101% 102%;
+    background-repeat: no-repeat;
+    height: 100%;
+    flex-direction: column;
+    margin-top: 70px !important;
+}
+
+.card-box {
+    width: 500px !important;
+    border: 1px solid white;
+    border-radius: 12px;
+}
+
+.card-title {
+    width: 100%;
+    border-bottom: 1px solid white;
+    margin: 0;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    border: none !important;
+    background: #0D202642;
+    border-top: 1px solid #0e171d;
+    border-radius: 0 0 10.5px 10.5px;
+}
+
+.card-body {
+    padding: 15px 0 1.5rem 0 !important;
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b0c1000;
+    border: 1px solid #45a29e;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control img {
+    margin-right: 10px;
+}
+
+.form-control input {
+    background: none;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    outline: none;
+}
+
+.form-control:focus-within {
+    box-shadow: none;
+    border-color: #66fcf1;
+}
+
+.forgot-password {
+    color: #66fcf1;
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    width: 140px !important;
+    border: 0.5px solid;
+    border-image-source: linear-gradient(90deg, #045965 0%, #FFFFFF 100%);
+    background: #0D2026;
+    border: 1px solid #a8c2ca;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: #45a29e;
+    color: #0b0c10;
+}
+
+.btn-google {
+    background-color: #4285F4;
+    border: none;
+    color: white;
+}
+
+.btn-google:hover {
+    background-color: #357ae8;
+}
+
+.card-title {
+    padding: 20px;
+    color: #ffffff;
+}
+
+a {
+    color: #66fcf1;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #45a29e;
+}
+
+.form-control {
+    img {
+        width: 15px !important;
+    }
+}
+
+form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mb-3 {
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+}
+
+.form-label {
+    color: white !important;
+    margin-bottom: 1rem !important;
+}
+
+.bottomText {
+    color: white !important;
+}
+
+.bottomText a {
+    cursor: pointer;
+    color: #84FFF8 !important;
+}
+
+
+@media screen and (max-width:600px) {
+    .card-box {
+        width: 85% !important;
+    }
+
+    .inputs {
+        flex-direction: column !important;
+        gap: 0px !important;
+    }
+}

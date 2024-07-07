@@ -1,0 +1,288 @@
+.mobileMenu .mat-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.mobileMenu .mat-menu-item i.material-icons {
+    margin-right: 10px;
+}
+
+.mobileMenu .mat-menu-item .currency-select {
+    flex: 1;
+    margin-left: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.mat-menu-item span {
+    flex: 1;
+}
+
+.option {
+    padding: 0 13px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+mat-expansion-panel {
+    background: #efedf1 !important;
+    box-shadow: none !important;
+}
+
+mat-expansion-panel-header {
+    padding: 0 10px 0 10px !important;
+}
+
+.mat-expansion-panel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.mat-expansion-panel-content {
+    overflow-y: auto;
+    /* Optional: Enable vertical scrolling if content exceeds panel height */
+}
+
+.MobileView {
+    display: none;
+}
+
+@media screen and (max-width:890px) {
+    .MobileView {
+        display: flex !important;
+    }
+
+    .actions,
+    .left nav {
+        display: none !important;
+    }
+
+    .currency-select {
+        position: absolute;
+        right: 75px;
+    }
+
+    .mobileMenuIcon {
+        outline: none;
+        /* Remove the outline when focused */
+    }
+
+    .mobileMenuIcon:focus,
+    .mobileMenuIcon:active {
+        /* Remove active styles */
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+
+
+// ***********************************************************MENU END**********************************************************
+
+header {
+    width: 100%;
+    height: 70px;
+    background: white;
+    position: relative;
+    z-index: 100;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0a0f24;
+    color: white;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 2px 16px;
+    border-radius: 5px;
+    border: 2px solid #03746C;
+}
+
+.header nav a:hover {
+    background-color: #1a73e8;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .header nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+// ***********************************************HEADER2********************************************************
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0a0f24;
+    color: white;
+    height: 70px;
+}
+
+.header1 .left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header1 .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header1 .logo span {
+    margin-left: 15px;
+}
+
+.header1 .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header1 nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header1 nav a {
+    color: white;
+    text-decoration: none;
+    padding: 2px 16px;
+    border-radius: 5px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-button {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #0a0f24;
+    border: 2px solid #03746C;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.wallet-icon {
+    margin-right: 8px;
+}
+
+.currency-select {
+    background-color: #0a0f24;
+    border: 2px solid #03746C;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.icon {
+    border: 2px solid #03746c;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .header1 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .header1 .left,
+    .header1 .actions {
+        display: none;
+    }
+
+    .menu-icon {
+        display: none !important;
+        align-self: flex-end;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    .currency-select {
+        position: absolute;
+        right: 25px;
+    }
+}

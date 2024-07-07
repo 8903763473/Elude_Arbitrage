@@ -1,0 +1,57 @@
+<section>
+    <content [class.popOpened]="popup">
+        <div class="wallet-container">
+            <div class="wallet-icon">
+                <img src="../../assets/icon/Wallet.svg" alt="Wallet Icon">
+            </div>
+            <button class="btn btn-custom Decomba" (click)="OpenPopup()">DECOMBO</button>
+            <p>Wallet not connected</p>
+        </div>
+    </content>
+    <!-- **************************************************POPUP******************************************** -->
+
+    <div *ngIf="popup" class="popup">
+        <div class="overlay"></div>
+        <div class="popupIn">
+            <div class="popupIn-top">
+                <img src="../../assets/icon/arrowLeft.svg" alt="">
+                <ion-label>New Cube</ion-label>
+            </div>
+
+            <div class="popupIn-bottom">
+                <ion-label>Utility</ion-label>
+                <div class="optionSection">
+                    <span class="popupOption">Send Token</span>
+                    <span class="popupOption">Multi Send</span>
+                    <span class="popupOption">Wrapped Native Token</span>
+                    <span class="popupOption">Add Fund</span>
+                    <span class="popupOption">Return Fund</span>
+                </div><br>
+                <ion-label>Uniswap V3</ion-label>
+                <div class="optionSection">
+                    <span class="popupOption">Swap Token</span>
+                    <span class="popupOption">Multi Swap</span>
+                </div><br>
+                <ion-label>Aave V3</ion-label>
+                <div class="optionSection">
+                    <span class="popupOption">Supply Token</span>
+                    <span class="popupOption">Withdraw</span>
+                    <span class="popupOption">Borrow</span>
+                    <span class="popupOption">Reply</span>
+                    <span class="popupOption">Flashloan</span>
+                </div><br>
+                <ion-label>Aave V2</ion-label>
+                <div class="optionSection">
+                    <span class="popupOption">Deposit</span>
+                    <span class="popupOption">Withdraw</span>
+                    <span class="popupOption">Borrow</span>
+                    <span class="popupOption">Reply</span>
+                    <span class="popupOption">Flashloan</span>
+                </div><br>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
