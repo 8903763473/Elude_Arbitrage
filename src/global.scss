@@ -96,3 +96,8 @@ body {
   justify-content: flex-start;
   gap: 10px;
 }
+
+.mat-mdc-table {
+  --max-width: 95% !important;
+}
+

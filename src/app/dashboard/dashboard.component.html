@@ -1,12 +1,730 @@
 <section>
-    <content [class.popOpened]="popup || alertTransaction">
-        <div class="wallet-container">
-            <div class="wallet-icon">
-                <img src="../../assets/icon/Wallet.svg" alt="Wallet Icon">
+    <content [class.popOpened]="popup || alertTransaction" [class.extraContent]="selectedOptions.length!=0">
+        <div style="width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;"
+            [class.contentIn]="selectedOptions.length!=0">
+            <div class="wallet-container" style="top: 75px !important;justify-content: space-around !important;"
+                *ngIf="selectedOptions.length==0">
+                <div class="wallet-icon">
+                    <img src="../../assets/icon/Wallet.svg" alt="Wallet Icon">
+                </div>
+                <button class="btn btn-custom Decomba" (click)="OpenPopup()">CREATE</button>
+                <p>Wallet not connected</p>
             </div>
-            <button class="btn btn-custom Decomba" (click)="OpenPopup()">DECOMBO</button>
-            <p>Wallet not connected</p>
         </div>
+
+        <ion-button *ngIf="selectedOptions.length!=0" style="position: fixed;
+        left: 25px;
+        top: 85px;
+        --background: #018a8a;" (click)="OpenPopup()">Create</ion-button>
+
+
+        <div *ngIf="create1" class="Create Account1" style="width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;">
+            <div class="Create-In" style="background: none !important;height: auto !important;width: 100% !important;">
+                <div class="firstSection" style="background: none !important;display: flex !important;
+                align-items: flex-start !important;
+                justify-content: center !important;gap: 70px;">
+                    <div class="firstSection-In" style="width: auto !important;"
+                        *ngFor="let item of selectedOptions; let i = index">
+
+
+                        <div class="showNotConnect" *ngIf="i==0">
+                            <img src="../../assets/icon/Wallet.svg" alt="">
+                            <span>Wallet not connected</span>
+                        </div>
+
+
+                        <!-- <div class="showOption" style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Borrow</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div> -->
+
+
+                        <!-- ***************************************************Utility********************************************** -->
+
+
+                        <div *ngIf="item=='Utility_Send Token'" #box id="box{{i}}" class="showOption"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Utility</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Send Token</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                                <div class="showOptionOutput">
+                                    <span>Address</span>
+                                    <div class="showOptionOutput-in">
+                                        <ion-input value="" style="width: 100% !important;"></ion-input>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+                        <div *ngIf="item=='Utility_Wrapped Native Token'" #box id="box{{i}}" class="showOption"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Utility</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Wrapped Native Token</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                                <div
+                                    style="width: 100%;display: flex;align-items: center;justify-content: flex-start;margin-top: 15px;">
+                                    <img src="../../assets/icon/arrow-replace.svg" alt="" style="padding: 10px;cursor: pointer;
+    position: relative;">
+                                </div>
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+                        <div *ngIf="item=='Utility_Add Fund'" #box id="box{{i}}" class="showOption"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Utility</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Add Fund</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+                        <div *ngIf="item=='Utility_Return Fund'" #box id="box{{i}}" class="showOption"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Utility</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Return Fund</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+
+                        <!-- ***************************************************UniSwap V3********************************************** -->
+
+
+
+                        <div *ngIf="item=='Uniswap V3_Swap Token'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Uniswap V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Swap Token</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="width: 100%;display: flex;align-items: center;justify-content: flex-start;margin-top: 15px;">
+                                    <img src="../../assets/icon/arrow-replace.svg" alt="" style="padding: 10px;cursor: pointer;
+    position: relative;">
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="Matic">Matic</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div><br>
+
+                                <ion-label class="box-bottom-price">Unit Price <span>1DAI=1.7905
+                                        MATIC($1)</span></ion-label>
+                                <ion-label class="box-bottom-price">Price Impact <span>-%</span></ion-label>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+                        <div *ngIf="item=='Uniswap V3_Multi Swap'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Uniswap V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Multi Token</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="11"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="width: 100%;display: flex;align-items: center;justify-content: flex-start;margin-top: 15px;">
+                                    <img src="../../assets/icon/circle-plus.svg" alt="" style="cursor: pointer;">
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="Matic">Matic</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="5.495977861800228748"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+                        <!-- ***************************************************Aave V3********************************************** -->
+
+                        <div *ngIf="item=='Aave V3_Supply'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Supply</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <ion-label style="height: 32px;
+    width: 40%;border: none !important;
+    background: #1e3035;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;">&nbsp; aPoIDAI</ion-label>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div><br>
+
+                                <ion-label class="box-bottom-price">Apy <span>4.81 %</span></ion-label>
+                                <ion-label class="box-bottom-price">Max LTV <span>63 %</span></ion-label>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V3_Withdraw'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Withdraw</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <ion-label style="height: 32px;
+    width: 40%;border: none !important;
+    background: #1e3035;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;">&nbsp; DAI</ion-label>
+                                        <ion-input value="" readonly></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V3_Borrow'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Borrow</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V3_Repay'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Repay</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V3_Flashloan'" #box id="box{{i}}" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V3</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">FalshLoan</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+
+
+                        <!-- ***************************************************Aave V2********************************************** -->
+
+                        <div *ngIf="item=='Aave V2_Deposit'" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Deposit</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <ion-label style="height: 32px;
+    width: 40%;border: none !important;
+    background: #1e3035;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;">&nbsp; aPoIDAI</ion-label>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div><br>
+
+                                <ion-label class="box-bottom-price">Apy <span>4.81 %</span></ion-label>
+                                <ion-label class="box-bottom-price">Max LTV <span>63 %</span></ion-label>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V2_Withdraw'" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Withdraw</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+
+                                <div class="showOptionOutput">
+                                    <span>Output(Estimate)</span>
+                                    <div class="showOptionOutput-in">
+                                        <ion-label style="height: 32px;
+    width: 40%;border: none !important;
+    background: #1e3035;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;">&nbsp; DAI</ion-label>
+                                        <ion-input value="" readonly></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V2_Borrow'" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Borrow</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V2_Repay'" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">Repay</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Input</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                        <div *ngIf="item=='Aave V2_Flashloan'" class="showOption box-container"
+                            style="height: auto !important;">
+                            <div class="showOptionTop">
+                                <div class="showOption-in">
+                                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                    <span>Aave V2</span>
+                                    <div class="rightSideImg">
+                                        <img src="../../assets/icon/delete.svg" alt="">
+                                        <img src="../../assets/icon/Edit.svg" alt="">
+                                    </div>
+                                </div><br>
+                                <ion-button class="borrowButton">FalshLoan</ion-button>
+
+                                <div class="showOptionOutput">
+                                    <span>Output</span>
+                                    <div class="showOptionOutput-in">
+                                        <select>
+                                            <option value="DAI">DAI</option>
+                                            <option value="AAVE">AAVE</option>
+                                            <option value="ADDY">ADDY</option>
+                                            <option value="BCT">BCT</option>
+                                            <option value="BOB">BOB</option>
+                                            <option value="CRN">CRN</option>
+                                        </select>
+                                        <ion-input value="0"></ion-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-button class="showOptionBottom">Set</ion-button>
+                        </div>
+
+                    </div>
+
+                    <div #boxContainer style="margin-top: 30px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div #boxContainer style="margin-top: 30px;">
+        </div> -->
+
+
     </content>
 
 
@@ -20,37 +738,17 @@
                 <ion-label>New Cube</ion-label>
             </div>
 
-            <div class="popupIn-bottom">
-                <ion-label>Utility</ion-label>
+            <div class="popupIn-bottom" *ngFor="let category of categories">
+                <ion-label>{{ category.label }}</ion-label>
                 <div class="optionSection">
-                    <span class="popupOption">Send Token</span>
-                    <span class="popupOption">Multi Send</span>
-                    <span class="popupOption">Wrapped Native Token</span>
-                    <span class="popupOption">Add Fund</span>
-                    <span class="popupOption">Return Fund</span>
-                </div><br>
-                <ion-label>Uniswap V3</ion-label>
-                <div class="optionSection">
-                    <span class="popupOption">Swap Token</span>
-                    <span class="popupOption">Multi Swap</span>
-                </div><br>
-                <ion-label>Aave V3</ion-label>
-                <div class="optionSection">
-                    <span class="popupOption">Supply Token</span>
-                    <span class="popupOption">Withdraw</span>
-                    <span class="popupOption">Borrow</span>
-                    <span class="popupOption">Reply</span>
-                    <span class="popupOption">Flashloan</span>
-                </div><br>
-                <ion-label>Aave V2</ion-label>
-                <div class="optionSection">
-                    <span class="popupOption">Deposit</span>
-                    <span class="popupOption">Withdraw</span>
-                    <span class="popupOption">Borrow</span>
-                    <span class="popupOption">Reply</span>
-                    <span class="popupOption">Flashloan</span>
-                </div><br>
+                    <span class="popupOption" *ngFor="let option of category.options"
+                        (click)="afterChoosed(category.label,option)">
+                        {{ option }}
+                    </span>
+                </div>
+                <br>
             </div>
+
         </div>
     </div>
 
@@ -155,6 +853,364 @@
         </div>
     </div>
 
+
+    <!-- *******************************************************POPUP 06*************************************** -->
+
+    <div *ngIf="availableWallet" class="Account">
+        <div class="account-box">
+            <div class="account-box-top" style="width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;">
+                <ion-label style="justify-content: space-between !important;width: 90%;">Available Wallets (4) <img
+                        src="../../assets/icon/close-line.svg" alt="" (click)="availableWallet=false"></ion-label>
+            </div>
+            <img src="../../assets/icon/acc-line.svg" alt="">
+
+            <div class="acc-body availableWallet">
+
+                <div class="acc-body-up">
+                    <div class="acc-body-up-in" (click)="AvailavleWallet()">
+                        <img src="../../assets/icon/walletconnect.svg" alt="">
+                        <ion-label>Wallet Connect</ion-label>
+                    </div>
+                    <div class="acc-body-up-in" (click)="AvailavleWallet()">
+                        <img src="../../assets/icon/coinbasewallet.svg" alt="">
+                        <ion-label>Coinbase Wallet</ion-label>
+                    </div>
+                    <div class="acc-body-up-in" (click)="AvailavleWallet()">
+                        <img src="../../assets/icon/noSignal.svg" alt="">
+                        <ion-label>Wallet Connect</ion-label>
+                    </div>
+                    <div class="acc-body-up-in" (click)="AvailavleWallet()">
+                        <img src="../../assets/icon/bluetooth.svg" alt="">
+                        <ion-label>Coinbase Wallet</ion-label>
+                    </div>
+                </div>
+
+
+
+                <span class="walletbottom">why don’t see my wallet ?<br>
+                    <p>click here to learn more</p>
+                    <img src="../../assets/icon/exclamatory.svg" alt="">
+                </span>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- *******************************************************POPUP 07*************************************** -->
+
+    <div *ngIf="Buycrypto" class="Account">
+        <div class="account-box buycrypto-box">
+            <div class="account-box-top" style="width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;">
+                <ion-label style="justify-content: center !important;width: 90%;">Buy Crypto to your wallet</ion-label>
+            </div>
+            <!-- <img src="../../assets/icon/acc-line.svg" alt=""> -->
+
+            <div class="acc-body availableWallet">
+
+                <span class="walletbottom buyCryptoWalletbutton">You pay<br>
+                    <p>83350</p>
+                    <img src="../../assets/icon/columnLine.svg" alt="">
+                    <select class="currency-select pointer">
+                        <option>INR</option>
+                        <option>USD</option>
+                        <option>EUR</option>
+                        <option>GBP</option>
+                        <option>AUD</option>
+                        <option>JPY</option>
+                    </select>
+                </span>
+
+                <div class="buyCryptocenter">
+                    <div class="buyCryptocenter-in">
+                        <ion-label>Using payment method <span><img src="../../assets/icon/circle.svg"
+                                    alt=""></span></ion-label>
+                        <ion-label>See fee calculation <span><img src="../../assets/icon/circle.svg"
+                                    alt=""></span></ion-label>
+                        <ion-label>275.45 INR total fee <span><img src="../../assets/icon/circle.svg"
+                                    alt=""></span></ion-label>
+                        <ion-label>275.45 INR = 1MATIC Rate <span><img src="../../assets/icon/circle.svg"
+                                    alt=""></span></ion-label>
+                    </div>
+                </div>
+
+                <span class="walletbottom buyCryptoWalletbutton" style="margin: 0 !important;">You receive
+                    (Estimate)<br>
+                    <p>156.16</p>
+                    <img src="../../assets/icon/columnLine.svg" alt="">
+                    <select class="currency-select pointer">
+                        <option>Matic</option>
+                        <option>Bitcoin</option>
+                        <option>Ethereum</option>
+                        <option>Ripple</option>
+                        <option>Litecoin</option>
+                        <option>Cardano</option>
+                    </select>
+                </span>
+
+            </div>
+
+            <div class="button-full">
+                <div class="button-full-in">
+                    <span>Buy Now</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- *******************************************************POPUP 08*************************************** -->
+
+    <div *ngIf="table" class="Account">
+        <div class="tableIn">
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Ticker Column -->
+                <ng-container matColumnDef="ticker">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticker </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+                </ng-container>
+
+                <!-- Price Column -->
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                </ng-container>
+
+                <!-- One Hour Column -->
+                <ng-container matColumnDef="oneHour">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 1h% </th>
+                    <td mat-cell *matCellDef="let element" class="dangerColor"> {{element.oneHour}} </td>
+                </ng-container>
+
+                <!-- One Day Column -->
+                <ng-container matColumnDef="oneDay">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 24h% </th>
+                    <td mat-cell *matCellDef="let element" class="dangerColor"> {{element.oneDay}} </td>
+                </ng-container>
+
+                <!-- Seven Day Column -->
+                <ng-container matColumnDef="sevenDay">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 7d% </th>
+                    <td mat-cell *matCellDef="let element" class="dangerColor"> {{element.sevenDay}} </td>
+                </ng-container>
+
+                <!-- Market Cap Column -->
+                <ng-container matColumnDef="marketCap">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Cap </th>
+                    <td mat-cell *matCellDef="let element"> {{element.marketCap}} </td>
+                </ng-container>
+
+                <!-- Volume 24h Column -->
+                <ng-container matColumnDef="volume24h">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume (24h) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.volume24h}} </td>
+                </ng-container>
+
+                <!-- Circulating Supply Column -->
+                <ng-container matColumnDef="circulatingSupply">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Circulating Supply </th>
+                    <td mat-cell *matCellDef="let element" style="text-wrap: wrap !important;text-align: left;flex-direction: column !important;display: flex;
+                        height: inherit;align-items: flex-start;
+                        justify-content: space-around;">
+                        {{element.circulatingSupply}} <img src="../../assets/icon/bold-line.svg" alt=""></td>
+                </ng-container>
+
+                <!-- Header and Row Definitions -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- *******************************************************POPUP 08*************************************** -->
+
+    <div *ngIf="create" class="Create Account">
+        <div class="Create-In">
+            <div class="firstSection">
+                <div class="firstSection-In">
+                    <div class="showNotConnect">
+                        <img src="../../assets/icon/Wallet.svg" alt="">
+                        <span>Wallet not connected</span>
+                    </div>
+
+                    <div class="showOption">
+                        <div class="showOptionTop">
+                            <div class="showOption-in">
+                                <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                                <span>Aave V2</span>
+                                <div class="rightSideImg">
+                                    <img src="../../assets/icon/delete.svg" alt="">
+                                    <img src="../../assets/icon/Edit.svg" alt="">
+                                </div>
+                            </div><br>
+                            <ion-button class="borrowButton">Borrow</ion-button>
+
+                            <div class="showOptionOutput">
+                                <span>Output</span>
+                                <div class="showOptionOutput-in">
+                                    <select>
+                                        <option value="DAI">DAI</option>
+                                        <option value="AAVE">AAVE</option>
+                                        <option value="ADDY">ADDY</option>
+                                        <option value="BCT">BCT</option>
+                                        <option value="BOB">BOB</option>
+                                        <option value="CRN">CRN</option>
+                                    </select>
+                                    <ion-input value="0"></ion-input>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ion-button class="showOptionBottom">Set</ion-button>
+                    </div>
+                </div>
+
+                <div #boxContainer style="margin-top: 30px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **********************************************************POPUP 09************************************* -->
+
+    <ng-template #boxTemplate let-index="index">
+        <div class="button-container" *ngIf="index === boxes.length - 1">
+            <img src="../../assets/icon/showOption.svg" alt="">
+            <div class="choose">
+                <button style="top: 10px;">Create</button>
+                <button style="top: 40px">Create1</button>
+                <button style="top: 70px">Create2</button>
+            </div>
+        </div>
+
+        <div class="showOption box-container" style="height: auto !important;">
+            <div class="showOptionTop">
+                <div class="showOption-in">
+                    <img src="../../assets/icon/circle-left-arrow.svg" alt="">
+                    <span>Aave V2</span>
+                    <div class="rightSideImg">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                    </div>
+                </div><br>
+                <ion-button class="borrowButton">Borrow</ion-button>
+
+                <div class="showOptionOutput">
+                    <span>Input</span>
+                    <div class="showOptionOutput-in">
+                        <select>
+                            <option value="DAI">DAI</option>
+                            <option value="AAVE">AAVE</option>
+                            <option value="ADDY">ADDY</option>
+                            <option value="BCT">BCT</option>
+                            <option value="BOB">BOB</option>
+                            <option value="CRN">CRN</option>
+                        </select>
+                        <ion-input value="0"></ion-input>
+                    </div>
+                </div><br>
+
+                <div class="showOptionOutput">
+                    <span>Output(Estimate)</span>
+                    <div class="showOptionOutput-in">
+                        <select>
+                            <option value="Matic">Matic</option>
+                            <option value="AAVE">AAVE</option>
+                            <option value="ADDY">ADDY</option>
+                            <option value="BCT">BCT</option>
+                            <option value="BOB">BOB</option>
+                            <option value="CRN">CRN</option>
+                        </select>
+                        <ion-input value="0"></ion-input>
+                    </div>
+                </div><br>
+
+                <ion-label class="box-bottom-price">Unit Price <span>1DAI=1.7905
+                        MATIC($1)</span></ion-label>
+                <ion-label class="box-bottom-price">Price Impact <span>-%</span></ion-label>
+            </div>
+            <ion-button class="showOptionBottom">Set</ion-button>
+        </div>
+    </ng-template>
+
+
+    <!-- **********************************************************POPUP 10************************************* -->
+
+    <div class="overview Account" *ngIf="graphSection">
+        <div class="overview-In">
+            <span class="title">Overview</span><br><br>
+            <div class="overview-chart">
+                <div class="graph">
+                    <canvas #chartLine id="chart-line" class="chart-canvas" height="300" width="510"></canvas>
+                </div>
+            </div><br>
+            <div class="overview-table">
+                <span class="title">Search For the wallet Address</span><br><br>
+                <div class="overview-tableIn">
+                    <div class="tableInside">
+                        <table mat-table [dataSource]="TabledataSource" matSort
+                            (matSortChange)="announceSortChange($event)" class="graphTable">
+                            <!-- Wallet Address Column -->
+                            <ng-container matColumnDef="walletAddress">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Wallet Address </th>
+                                <td mat-cell *matCellDef="let element"> {{element.walletAddress}} </td>
+                            </ng-container>
+
+                            <!-- Plan Column -->
+                            <ng-container matColumnDef="plan">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Plan </th>
+                                <td mat-cell *matCellDef="let element"> {{element.plan}} </td>
+                            </ng-container>
+
+                            <!-- Subscription Date Column -->
+                            <ng-container matColumnDef="subscriptionDate">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Subscription Date </th>
+                                <td mat-cell *matCellDef="let element"> {{element.subscriptionDate}} </td>
+                            </ng-container>
+
+                            <!-- Transaction Run Column -->
+                            <ng-container matColumnDef="transactionRun">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Run </th>
+                                <td mat-cell *matCellDef="let element"> {{element.TransactionRun}} </td>
+                            </ng-container>
+
+                            <!-- Total Profit Column -->
+                            <ng-container matColumnDef="totalProfit">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Profit </th>
+                                <td mat-cell *matCellDef="let element" class="profit"> {{element.totalProfit}} </td>
+                            </ng-container>
+
+                            <!-- Header and Row Definitions -->
+                            <tr mat-header-row *matHeaderRowDef="TabledisplayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: TabledisplayedColumns;"></tr>
+                        </table>
+
+                    </div>
+                </div><br>
+            </div>
+        </div>
+    </div>
+      
 
 
 </section>

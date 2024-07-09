@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.0.0",
+    "@angular/animations": "^18.0.6",
     "@angular/cdk": "^18.0.6",
     "@angular/common": "^18.0.0",
     "@angular/compiler": "^18.0.0",
@@ -26,7 +26,10 @@
     "@ionic/angular": "^8.2.5",
     "@ionic/cordova-builders": "^11.0.0",
     "bootstrap-icons": "^1.11.3",
+    "chart.js": "^3.0.0",
     "ionicons": "^7.0.0",
+    "jsplumb": "^2.15.6",
+    "ng2-charts": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

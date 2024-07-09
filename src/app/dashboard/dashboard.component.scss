@@ -27,6 +27,16 @@ section {
         justify-content: center;
     }
 
+    .extraContent {
+        align-items: flex-start !important;
+        justify-content: space-around !important;
+        overflow: scroll !important;
+    }
+
+    .contentIn {
+        width: auto !important;
+    }
+
     .popOpened {
         width: 100%;
         height: 100%;
@@ -151,11 +161,15 @@ p {
     justify-content: center;
 
     .popupIn {
-        width: 75%;
+        width: 80%;
         height: 80%;
         position: relative;
         z-index: 10;
         overflow: scroll;
+
+        span {
+            cursor: pointer !important;
+        }
 
         .popupIn-top {
             width: 100%;
@@ -320,7 +334,7 @@ p {
     position: fixed;
     left: 0;
     z-index: 10;
-    background-color: #0000001c;
+    background-color: rgb(12 20 27 / 72%);
 
     .account-box {
         width: 550px;
@@ -400,14 +414,197 @@ p {
 }
 
 .walletbottom {
-    width: 95%;
-    text-align: start;
+    width: 93%;
+    position: relative;
+    color: #C5C5C5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    margin-top: 29px !important;
+    line-height: 24px;
+    text-align: left;
 
     p {
-        text-align: start;
+        margin: 0 !important;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20.16px;
+        text-align: left;
+        color: #FFF
+    }
+
+    img {
+        top: 32%;
+        position: absolute;
+        right: 20px;
+        width: 22px;
     }
 }
 
+.availableWallet {
+    margin-top: 13px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+.acc-body-up {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .acc-body-up-in {
+        width: 44%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        gap: 10px;
+        cursor: pointer;
+
+        img {
+            width: 65px;
+        }
+    }
+}
+
+// .currency-select {
+//     position: absolute;
+//     right: 0;
+// }
+
+.buyCryptoWalletbutton {
+    img {
+        top: 0;
+        position: absolute;
+        right: 25%;
+        width: 22px;
+        height: 100%;
+    }
+
+    select {
+        position: absolute;
+        border: none !important;
+        background: #0a1c20;
+        width: 80px;
+        right: 2% !important;
+    }
+}
+
+.buyCryptocenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .buyCryptocenter-in {
+        width: 88% !important;
+        height: 100%;
+        border-left: 1px solid grey;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        line-height: 2;
+
+        ion-label {
+            margin-left: 20px;
+            padding: 10px 0;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: -38px;
+                top: -6px;
+                border: none !important;
+            }
+        }
+    }
+}
+
+.buycrypto-box {
+    height: auto !important;
+    padding: 0 0 30px 0 !important;
+
+    .button-full {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button-full-in {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 20px;
+            border: 1px solid white;
+            border-radius: 20px;
+            margin-top: 25px;
+            cursor: pointer;
+
+            span {
+                font-family: Poppins;
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 36px;
+                text-align: center;
+
+            }
+        }
+    }
+}
+
+.Account {
+    table {
+        --max-width: 95% !important;
+        background-color: #0c2028 !important;
+
+        th,
+        td {
+            color: white;
+        }
+    }
+}
+
+.tableIn {
+    width: 85% !important;
+    height: auto;
+    overflow-x: scroll !important;
+    border: 2.5px solid;
+    border-image-source: linear-gradient(283.71deg, #045965 0.23%, #FFFFFF 99.77%);
+    border-image-slice: 1;
+
+    th,
+    td {
+        text-wrap: nowrap !important;
+        border-bottom: 2px solid #364549 !important;
+    }
+}
+
+.dangerColor {
+    color: red !important;
+}
+
+
+th.mat-sort-header-sorted {
+    color: black;
+}
 
 @media screen and (max-width:600px) {
     .account-box {
@@ -417,7 +614,347 @@ p {
 
     .acc-body {
         span {
-            width: 90% !important;
+            width: 90%;
+        }
+    }
+
+    .acc-body-up-in {
+        width: 95% !important;
+    }
+
+    .availableWallet {
+        padding: 0 0 30px 0;
+    }
+
+    .walletbottom {
+        width: 95% !important;
+        margin-top: 20px !important;
+    }
+
+    .title {
+        font-size: 18px !important;
+    }
+}
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    width: 200px;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: grab;
+}
+
+.options {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.Create-In {
+    width: 90%;
+    height: 100%;
+    background: #1e3035;
+
+    .firstSection {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-top: 70px;
+        gap: 20px;
+        flex-wrap: wrap;
+        overflow: scroll;
+        height: -webkit-fill-available !important;
+        padding-bottom: 40px;
+
+        .firstSection-In {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .showNotConnect {
+            width: 200px;
+            height: 200px;
+            border: 1px solid white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .showOption {
+            width: 400px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            border: 1px solid white;
+            border-radius: 20px;
+
+            .showOptionTop {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-direction: column;
+
+                .showOption-in {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    img {
+                        cursor: pointer;
+                        width: 25px !important;
+                    }
+
+                    span {
+                        font-family: Poppins;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        text-align: left;
+
+                    }
+
+                    .rightSideImg {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 10px;
+                    }
+                }
+
+                .borrowButton {
+                    width: 80%;
+                    border: 1px solid #01CECE;
+                    border-radius: 10px;
+                    color: white;
+                    --background: #01CECE1A;
+                    --border: 3.5px solid;
+                    --border-image-source: linear-gradient(107.22deg, #FFFFFF 2.86%, #055965 100%);
+                }
+
+                .showOptionOutput {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: 20px;
+
+                    span {
+                        font-family: Poppins;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        text-align: left;
+                        color: #9B9797;
+                    }
+
+                    .showOptionOutput-in {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 10px;
+
+                        select {
+                            border: none !important;
+                            background: #1e3035;
+                            height: 32px;
+                            width: 40%;
+                        }
+
+                        ion-input {
+                            height: 32px;
+                            width: 60%;
+                            text-align: right;
+                            border-bottom: 1px solid grey;
+                        }
+                    }
+                }
+
+                .box-bottom-price {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                    font-family: Poppins;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    text-align: left;
+                    color: #0DADCA;
+                }
+            }
+
+            .showOptionBottom {
+                width: 99% !important;
+                border-top: 1px solid grey;
+                color: white;
+                text-align: center;
+                color: white;
+                --background: #0b242a;
+                --border-radius: 7px 3px 17px 19px;
+            }
         }
     }
 }
+
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    width: fit-content;
+    margin: 0 auto;
+
+    button {
+        background-color: #3498db;
+        /* Blue */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        /* Slightly rounded corners */
+    }
+
+    button:hover {
+        background-color: #2980b9;
+        /* Darker blue on hover */
+    }
+}
+
+.button-container {
+    position: relative;
+    width: 230px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .choose {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        left: 0;
+        position: absolute;
+        top: 4px;
+
+        button {
+            padding: 3px 15px !important;
+            --box-radius: 23px;
+            border: 1px solid #FFFFFF;
+            background-color: #115667 !important;
+        }
+    }
+}
+
+.overview {
+
+    .title {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+    }
+
+    .overview-In {
+        width: 90%;
+        height: 90%;
+        overflow: scroll;
+
+        .overview-chart {
+            width: 100%;
+            height: 35%;
+            border: 1px solid #135f70;
+            border-radius: 20px;
+            background: #0d292f70;
+
+            .graph {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .overview-table {
+            width: 100%;
+            height: auto;
+
+            .overview-tableIn {
+                width: 100%;
+                height: 65%;
+                border: 1px solid #135f70;
+                border-radius: 20px;
+                background: #0d292f70;
+
+                .tableInside {
+                    overflow-x: scroll;
+                }
+            }
+        }
+    }
+}
+
+.profit {
+    color: #84FFF8 !important;
+}
+
+.graphTable {
+
+    tr,
+    td {
+        font-family: Sofia Sans;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+
+    }
+}
+
+
+
+

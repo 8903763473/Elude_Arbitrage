@@ -70,8 +70,8 @@
         <option>Base</option>
         <option>Gnosis Chain</option>
       </select>
-      <img src="../assets/icon/Setting.svg" alt="" class="icon pointer">
-      <img src="../assets/icon/delete.svg" alt="" class="icon pointer">
+      <img src="../assets/icon/Setting.svg" alt="" class="icon pointer" (click)="iconClicked('deleteAll')">
+      <img src="../assets/icon/delete.svg" alt="" class="icon pointer" (click)="iconClicked('TransactionSetting')">
     </div>
     <div class="menu-icon pointer" (click)="toggleMenu()">
       <img src="../assets/icon/menu.svg" alt="Menu Icon">
@@ -112,4 +112,18 @@
   </header>
 
   <ion-router-outlet></ion-router-outlet>
+
+  <footer class="footer" *ngIf="Footer">
+    <div class="col-md-9 d-flex justify-content-end container">
+      <img src="../assets/images/temp-logo.jpeg" alt="Company Logo" style="width: 46px;
+height: 46px;">
+      <a class="footer-link"><img src="../assets/icon/User Lock.svg" alt=""> Privacy &
+        Policy</a>
+      <a class="footer-link"><img src="../assets/icon/Terms.svg" alt="">Terms &
+        Conditions</a>
+      <a class="footer-link"><img src="../assets/icon/help.svg" alt="">Help
+        Center</a>
+    </div>
+  </footer>
+
 </ion-app>

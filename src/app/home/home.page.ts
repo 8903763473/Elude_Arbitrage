@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public router: Router, public app: AppComponent) { }
 
+  ngOnInit() {
+    this.app.Footer = true;
+    this.app.AuthHeader = true;
+    this.app.dashboardHeader = false;
+  }
 }

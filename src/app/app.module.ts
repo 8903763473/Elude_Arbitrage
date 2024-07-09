@@ -13,6 +13,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -34,7 +37,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    RouterModule.forRoot(routes, { useHash: true }), MatButtonModule, MatMenuModule,MatExpansionModule],
+    DragDropModule,
+    RouterModule.forRoot(routes, { useHash: true }), MatButtonModule, MatTableModule, MatSortModule, MatMenuModule, MatExpansionModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })

@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   constructor(public router: Router, public app: AppComponent) { }
 
   ngOnInit() {
+    this.app.Footer = false;
     this.app.AuthHeader = true;
     this.app.dashboardHeader = false;
   }
