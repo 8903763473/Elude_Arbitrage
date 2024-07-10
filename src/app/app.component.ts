@@ -34,8 +34,37 @@ export class AppComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  iconClicked(data: any) {
-    localStorage.setItem(data, 'true');
+  deleteAction() {
+    localStorage.setItem('clickedIcon', '');
+    this.deleteAll = false;
+  }
+
+  SettingAction() {
+    localStorage.setItem('clickedIcon', '');
+    this.TransactionSetting = false;
+  }
+
+  iconAction(data: any) {
+    if (data == 'setting') {
+      this.availableWallet = false;
+      this.TransactionSetting = true;
+      this.deleteAll = false;
+    } else {
+      this.availableWallet = false;
+      this.TransactionSetting = false;
+      this.deleteAll = true;
+    }
+  }
+
+  AvailavleWallet() {
+    this.availableWallet = false;
+  }
+
+  openAvailavleWallet() {
+    console.log('vijay');
+    this.TransactionSetting = false;
+    this.deleteAll = false;
+    this.availableWallet = true;
   }
 
 }

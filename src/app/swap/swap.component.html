@@ -1,0 +1,6 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)" class="box-container">
+  <div *ngFor="let box of boxes" cdkDrag class="box">
+    <h2>{{ box.title }}</h2>
+    <p>{{ box.content }}</p>
+  </div>
+</div>

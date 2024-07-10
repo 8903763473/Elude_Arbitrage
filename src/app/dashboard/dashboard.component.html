@@ -26,9 +26,9 @@
             <div class="Create-In" style="background: none !important;height: auto !important;width: 100% !important;">
                 <div class="firstSection" style="background: none !important;display: flex !important;
                 align-items: flex-start !important;
-                justify-content: center !important;gap: 70px;">
+                justify-content: center !important;gap: 70px;" cdkDropList (cdkDropListDropped)="drop($event)">
                     <div class="firstSection-In" style="width: auto !important;"
-                        *ngFor="let item of selectedOptions; let i = index">
+                        *ngFor="let item of selectedOptions; let i = index" cdkDrag>
 
 
                         <div class="showNotConnect" *ngIf="i==0">
@@ -67,7 +67,7 @@
                         <!-- ***************************************************Utility********************************************** -->
 
 
-                        <div *ngIf="item=='Utility_Send Token'" #box id="box{{i}}" class="showOption"
+                        <div *ngIf="item=='Utility_Send Token'" #box id="box{{i}}" class="showOption Move"
                             style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
@@ -107,7 +107,7 @@
                         </div>
 
 
-                        <div *ngIf="item=='Utility_Wrapped Native Token'" #box id="box{{i}}" class="showOption"
+                        <div *ngIf="item=='Utility_Wrapped Native Token'" #box id="box{{i}}" class="showOption Move"
                             style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
@@ -159,7 +159,7 @@
                         </div>
 
 
-                        <div *ngIf="item=='Utility_Add Fund'" #box id="box{{i}}" class="showOption"
+                        <div *ngIf="item=='Utility_Add Fund'" #box id="box{{i}}" class="showOption Move"
                             style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
@@ -191,7 +191,7 @@
                         </div>
 
 
-                        <div *ngIf="item=='Utility_Return Fund'" #box id="box{{i}}" class="showOption"
+                        <div *ngIf="item=='Utility_Return Fund'" #box id="box{{i}}" class="showOption Move"
                             style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
@@ -228,8 +228,8 @@
 
 
 
-                        <div *ngIf="item=='Uniswap V3_Swap Token'" #box id="box{{i}}" class="showOption box-container"
-                            style="height: auto !important;">
+                        <div *ngIf="item=='Uniswap V3_Swap Token'" #box id="box{{i}}"
+                            class="showOption box-container Move" style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
                                     <img src="../../assets/icon/circle-left-arrow.svg" alt="">
@@ -285,8 +285,8 @@
                         </div>
 
 
-                        <div *ngIf="item=='Uniswap V3_Multi Swap'" #box id="box{{i}}" class="showOption box-container"
-                            style="height: auto !important;">
+                        <div *ngIf="item=='Uniswap V3_Multi Swap'" #box id="box{{i}}"
+                            class="showOption box-container Move" style="height: auto !important;">
                             <div class="showOptionTop">
                                 <div class="showOption-in">
                                     <img src="../../assets/icon/circle-left-arrow.svg" alt="">
@@ -730,7 +730,7 @@
 
     <!-- **************************************************POPUP 01******************************************** -->
 
-    <div *ngIf="popup" class="popup">
+    <div *ngIf="popup" class="popup popupBackground">
         <div class="overlay"></div>
         <div class="popupIn">
             <div class="popupIn-top">
@@ -755,7 +755,7 @@
 
     <!-- **************************************************POPUP 02******************************************** -->
 
-    <div *ngIf="alertTransaction" class="popup2">
+    <div *ngIf="alertTransaction" class="popup2 popupBackground">
         <div class="modal-box">
             <ion-label>Do you want to make a transaction ?</ion-label>
             <div class="buttons">
@@ -773,26 +773,28 @@
 
     <!-- **************************************************POPUP 03******************************************** -->
 
-    <div *ngIf="deleteAll" class="popup2">
+    <!-- <div *ngIf="deleteAll" class="popup2 popupBackground">
         <div class="modal-box">
             <ion-label><img src="../../assets/icon/delete.svg" alt=""> Delete</ion-label><br>
             <ion-label>Delete all Cubes <img src="../../assets/icon/question.svg" alt=""></ion-label><br>
             <div class="buttons" style="margin: 0 !important;">
-                <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+                <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;"
+                    (click)="deleteAction()">
                     <img src="../../assets/icon/tick.svg" alt="">&nbsp;Cancel
                 </ion-button>
                 <ion-button
-                    style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+                    style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;"
+                    (click)="deleteAction()">
                     <img src="../../assets/icon/close.svg" alt="">&nbsp;Delete
                 </ion-button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- **************************************************POPUP 04******************************************** -->
 
-    <div *ngIf="TransactionSetting" class="popup2">
+    <!-- <div *ngIf="TransactionSetting" class="popup2 popupBackground">
         <div class="modal-box">
             <ion-label class="transactionSettingTitle" style="width: 100%;display: flex;align-items: center;justify-content: center;gap: 60px;font-family: Poppins;
             font-size: 20px;
@@ -800,7 +802,7 @@
             line-height: 30px;
             text-align: left;
             "><img src="../../assets/icon/Setting.svg" alt=""> Transaction Setting <img
-                    src="../../assets/icon/close-line.svg" alt=""></ion-label><br>
+                    src="../../assets/icon/close-line.svg" alt="" (click)="SettingAction()"></ion-label><br>
             <ion-label style="font-family: Poppins;
             font-size: 20px;
             font-weight: 600;
@@ -817,12 +819,12 @@
                 </ion-button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- **************************************************POPUP 05******************************************** -->
 
-    <div *ngIf="AccountPop" class="Account">
+    <div *ngIf="AccountPop" class="Account popupBackground">
         <div class="account-box">
             <div class="account-box-top">
                 <ion-label>ACCOUNT 1 <img src="../../assets/icon/arrow.svg" alt=""> 0878jhhgfhhshsdfh</ion-label>
@@ -856,7 +858,7 @@
 
     <!-- *******************************************************POPUP 06*************************************** -->
 
-    <div *ngIf="availableWallet" class="Account">
+    <div *ngIf="availableWallet" class="Account popupBackground">
         <div class="account-box">
             <div class="account-box-top" style="width: 100%;
         display: flex;
@@ -903,7 +905,7 @@
 
     <!-- *******************************************************POPUP 07*************************************** -->
 
-    <div *ngIf="Buycrypto" class="Account">
+    <div *ngIf="Buycrypto" class="Account popupBackground">
         <div class="account-box buycrypto-box">
             <div class="account-box-top" style="width: 100%;
         display: flex;
@@ -968,7 +970,7 @@
 
     <!-- *******************************************************POPUP 08*************************************** -->
 
-    <div *ngIf="table" class="Account">
+    <div *ngIf="table" class="Account popupBackground">
         <div class="tableIn">
             <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
                 <!-- Position Column -->
@@ -1043,7 +1045,7 @@
 
     <!-- *******************************************************POPUP 08*************************************** -->
 
-    <div *ngIf="create" class="Create Account">
+    <div *ngIf="create" class="Create Account popupBackground">
         <div class="Create-In">
             <div class="firstSection">
                 <div class="firstSection-In">
@@ -1156,7 +1158,7 @@
 
     <!-- **********************************************************POPUP 10************************************* -->
 
-    <div class="overview Account" *ngIf="graphSection">
+    <div class="overview Account popupBackground" *ngIf="graphSection">
         <div class="overview-In">
             <span class="title">Overview</span><br><br>
             <div class="overview-chart">
@@ -1210,7 +1212,7 @@
             </div>
         </div>
     </div>
-      
+
 
 
 </section>

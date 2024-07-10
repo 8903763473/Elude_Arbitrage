@@ -6,7 +6,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Chart, registerables } from 'chart.js';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { jsPlumb } from 'jsplumb';
+declare var jsPlumb: any;
 
 
 Chart.register(...registerables);
@@ -215,19 +215,33 @@ export class DashboardComponent implements OnInit {
 
 
   selectedOptions: any = []
-
   private hasView = false;
   avaliablealletPickedOption: any;
 
-  @ViewChildren('box') boxes: any;
+  @ViewChildren('box') boxes: QueryList<ElementRef> | any;
 
-  constructor(public router: Router, public app: AppComponent, private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(public router: Router, public app: AppComponent, private _liveAnnouncer: LiveAnnouncer) {
+    this.getLocalData()
+  }
 
   ngOnInit() {
     this.app.Footer = false;
     this.selectedOptions = []
     this.app.dashboardHeader = true;
     this.app.AuthHeader = false;
+    localStorage.setItem('clickedIcon', '')
+  }
+
+  getLocalData() {
+    // const Setting: any = localStorage.getItem('clickedIcon');
+    // if (Setting == 'deleteAll') {
+    //   this.deleteAll = true;
+    // } else if (Setting == 'TransactionSetting') {
+    //   this.TransactionSetting = true;
+    // }
+    // setTimeout(() => {
+    //   this.getLocalData()
+    // }, 1000)
   }
 
   ngAfterViewInit() {
@@ -258,9 +272,13 @@ export class DashboardComponent implements OnInit {
         paintStyle: { stroke: 'gray', strokeWidth: 2 }
       };
 
-      this.boxes.forEach((box: any, index: any) => {
+      this.selectedOptions.forEach((box: ElementRef, index: number) => {
         const currentId = `box${index}`;
         box.nativeElement.setAttribute('id', currentId);
+
+        instance.draggable(box.nativeElement, {
+          containment: 'parent' // Optionally limit dragging within parent container
+        });
 
         if (index > 0) {
           const previousId = `box${index - 1}`;
@@ -375,6 +393,7 @@ export class DashboardComponent implements OnInit {
   afterChoosed(label: string, option: string) {
     if (option == 'Return Fund' || option == 'Repay') {
       this.popup = false;
+      this.app.availableWallet = false;
       this.availableWallet = true;
       this.avaliablealletPickedOption = `${label}_${option}`
     } else {
@@ -395,6 +414,10 @@ export class DashboardComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  drop(event: CdkDragDrop<Box[]>) {
+    moveItemInArray(this.selectedOptions, event.previousIndex, event.currentIndex);
   }
 
 }

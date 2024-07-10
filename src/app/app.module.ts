@@ -16,6 +16,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SwapComponent } from './swap/swap.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,11 +32,15 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
+  {
+    path: 'swap',
+    component: SwapComponent
+  },
 ];
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent, SwapComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     DragDropModule,
     RouterModule.forRoot(routes, { useHash: true }), MatButtonModule, MatTableModule, MatSortModule, MatMenuModule, MatExpansionModule],

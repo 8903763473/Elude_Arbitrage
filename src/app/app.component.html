@@ -56,7 +56,7 @@
     </div>
     <div class="actions">
       <img class="user-avatar" src="../assets/images/user.png" alt="User Avatar">
-      <button class="wallet-button pointer">
+      <button class="wallet-button pointer" (click)="openAvailavleWallet()">
         <span class="wallet-icon"></span>
         Connect Wallet
       </button>
@@ -70,8 +70,8 @@
         <option>Base</option>
         <option>Gnosis Chain</option>
       </select>
-      <img src="../assets/icon/Setting.svg" alt="" class="icon pointer" (click)="iconClicked('deleteAll')">
-      <img src="../assets/icon/delete.svg" alt="" class="icon pointer" (click)="iconClicked('TransactionSetting')">
+      <img src="../assets/icon/Setting.svg" alt="" class="icon pointer" (click)="iconAction('setting')">
+      <img src="../assets/icon/delete.svg" alt="" class="icon pointer" (click)="iconAction('delete')">
     </div>
     <div class="menu-icon pointer" (click)="toggleMenu()">
       <img src="../assets/icon/menu.svg" alt="Menu Icon">
@@ -110,6 +110,104 @@
     </mat-menu>
 
   </header>
+
+  <!-- **************************************************POPUP 01******************************************** -->
+
+  <div *ngIf="deleteAll" class="popup2 popupBackground" style="width: 100%;
+  height: 100%;
+  top: 70px;
+  position: fixed;
+  z-index: 100;">
+    <div class="modal-box">
+      <ion-label class="text-white"><img src="../../assets/icon/delete.svg" alt=""> Delete</ion-label><br>
+      <ion-label class="text-white">Delete all Cubes <img src="../../assets/icon/question.svg" alt=""></ion-label><br>
+      <div class="buttons" style="margin: 0 !important;">
+        <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;" (click)="deleteAction()">
+          <img src="../../assets/icon/tick.svg" alt="">&nbsp;Cancel
+        </ion-button>
+        <ion-button style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;"
+          (click)="deleteAction()">
+          <img src="../../assets/icon/close.svg" alt="">&nbsp;Delete
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- **************************************************POPUP 02******************************************** -->
+
+  <div *ngIf="TransactionSetting" class="popup2 popupBackground">
+    <div class="modal-box">
+      <ion-label class="transactionSettingTitle text-white" style="width: 100%;display: flex;align-items: center;justify-content: center;gap: 60px;font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        "><img src="../../assets/icon/Setting.svg" alt=""> Transaction Setting <img
+          src="../../assets/icon/close-line.svg" alt="" style="cursor: pointer;"
+          (click)="SettingAction()"></ion-label><br>
+      <ion-label style="font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        " class="slippage text-white">Slippage Tolerance</ion-label><br>
+      <div class="buttons" style="margin: 0 !important;">
+        <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+          Auto 3%
+        </ion-button>
+        <ion-button style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+          Custom
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- **************************************************POPUP 03******************************************** -->
+
+  <div *ngIf="availableWallet" class="Account popupBackground">
+    <div class="account-box">
+      <div class="account-box-top" style="width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;">
+        <ion-label style="justify-content: space-between !important;width: 90%;" class="text-white">Available Wallets
+          (4) <img src="../../assets/icon/close-line.svg" alt="" (click)="availableWallet=false"
+            style="cursor: pointer;"></ion-label>
+      </div>
+      <img src="../../assets/icon/acc-line.svg" alt="">
+
+      <div class="acc-body availableWallet">
+
+        <div class="acc-body-up">
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/walletconnect.svg" alt="">
+            <ion-label class=" text-white">Wallet Connect</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/coinbasewallet.svg" alt="">
+            <ion-label class=" text-white">Coinbase Wallet</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/noSignal.svg" alt="">
+            <ion-label class=" text-white">Wallet Connect</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/bluetooth.svg" alt="">
+            <ion-label class=" text-white">Coinbase Wallet</ion-label>
+          </div>
+        </div>
+
+
+
+        <span class="walletbottom text-white">why don’t see my wallet ?<br>
+          <p class=" text-white">click here to learn more</p>
+          <img src="../../assets/icon/exclamatory.svg" alt="">
+        </span>
+      </div>
+
+
+    </div>
+  </div>
 
   <ion-router-outlet></ion-router-outlet>
 
