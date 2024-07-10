@@ -1,0 +1,971 @@
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+
+::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+section {
+    background-color: #0e1a2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    max-width: 100% !important;
+    width: 100%;
+    height: 100%;
+    margin-top: 70px !important;
+    background-image: url('../../assets/backgroundimage/dashboard.png') !important;
+    background-position: center center;
+    background-size: 101% 102%;
+    background-repeat: no-repeat;
+
+    content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .extraContent {
+        align-items: flex-start !important;
+        justify-content: space-around !important;
+        overflow: scroll !important;
+    }
+
+    .contentIn {
+        width: auto !important;
+    }
+
+    .popOpened {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: blur(5px);
+    }
+}
+
+.wallet-container {
+    width: 435px;
+    height: 315px;
+    background: rgb(0 0 0 / 0%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.wallet-icon {
+    margin: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    border: 1px solid grey;
+    background: #0e1a2b;
+    border-radius: 50%;
+}
+
+.Decomba {
+    width: 270px;
+    background-color: #0D2026 !important;
+    border: 1px solid #FFF !important;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+}
+
+p {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+
+}
+
+.wallet-icon img {
+    width: 70px;
+    height: 70px;
+}
+
+.btn-custom {
+    background-color: #1a73e8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .wallet-container {
+        width: 65% !important;
+    }
+
+    .Decomba {
+        width: 70% !important;
+        font-size: 14px;
+    }
+
+    .wallet-icon {
+        width: 60px;
+        height: 60px;
+        right: -30px;
+        top: -30px;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .wallet-container {
+        p {
+            font-size: 15px !important;
+        }
+    }
+
+    .btn-custom {
+        padding: 10px !important;
+    }
+}
+
+// ***************************************************POPUP****************************************
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    // top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #0000001c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .popupIn {
+        width: 80%;
+        height: 80%;
+        position: relative;
+        z-index: 10;
+        overflow: scroll;
+
+        span {
+            cursor: pointer !important;
+        }
+
+        .popupIn-top {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            img {
+                position: absolute;
+                left: 40px;
+                cursor: pointer;
+            }
+
+            ion-label {
+                font-family: poppins;
+                font-size: 32px;
+                line-height: 38.4px;
+                text-align: left;
+            }
+        }
+
+        .popupIn-bottom {
+            height: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 25px;
+            margin: 0 30px;
+            width: auto;
+
+            .optionSection {
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 15px;
+
+                span {
+                    width: Fixed (174px)px;
+                    height: Fixed (43px)px;
+                    padding: 9px 37px 9px 37px;
+                    gap: 10px;
+                    border-radius: 20px 0px 20px 0px;
+                    border: 1px 0px 0px 0px;
+                    opacity: 0px;
+                    background: linear-gradient(93.38deg, rgba(146, 174, 247, 0.16) 0.65%, rgba(144, 142, 253, 0.16) 113.07%);
+                    box-shadow: 0px 4px 4px 0px #00000040;
+                }
+            }
+        }
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        filter: blur(5px);
+        z-index: 1;
+        background: #0D2026A6;
+    }
+}
+
+@media screen and (max-width:730px) {
+    .popupIn {
+        width: 95% !important;
+    }
+}
+
+
+
+// ***********************02************************
+.popup2 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    // top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #0000001c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-box {
+        width: 500px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #0B2B31;
+        border-radius: 19px;
+        border: 1px solid grey;
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            margin-top: 30px;
+            gap: 20px;
+
+            ion-button {
+                width: 100px;
+                --color: white !important;
+                font-family: Sofia Sans;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 24px;
+                text-align: left;
+            }
+        }
+
+        ion-label {
+            text-align: center !important;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        .modal-box {
+            width: 90% !important;
+        }
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .slippage,
+    .transactionSettingTitle {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width:600px) and (min-width:400px) {
+    .transactionSettingTitle {
+        gap: 30px !important;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .transactionSettingTitle {
+        gap: 20px !important;
+    }
+}
+
+// ***************************************************ACCOUNT********************************************
+
+.Account {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    z-index: 10;
+    background-color: rgb(12 20 27 / 72%);
+
+    .account-box {
+        width: 550px;
+        height: 50%;
+        background: #0a1c20;
+        border-radius: 19px;
+        border: 1px solid white;
+
+        .account-box-top {
+            padding: 20px 0 10px 0;
+
+            ion-label {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+        }
+
+        .acc-body {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+            span {
+                padding: 10px;
+                border: 2px solid grey;
+                border-radius: 8px;
+                margin-top: 10px;
+                line-height: 24px;
+                text-align: left;
+
+            }
+        }
+
+        .acc-bottom {
+            width: 100%;
+            height: auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .acc-bottom-in {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px;
+
+                .acc-bottom-right {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    .span1,
+                    .span2 {
+                        text-align: end !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .acc-confirm {
+        --background: #115667;
+        --box-shadow: 0px 1px 4px 0px #FFF8F840;
+        --color: white;
+        width: 200px;
+        margin-top: 20px;
+    }
+
+}
+
+.walletbottom {
+    width: 93%;
+    position: relative;
+    color: #C5C5C5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    margin-top: 29px !important;
+    line-height: 24px;
+    text-align: left;
+
+    p {
+        margin: 0 !important;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20.16px;
+        text-align: left;
+        color: #FFF
+    }
+
+    img {
+        top: 32%;
+        position: absolute;
+        right: 20px;
+        width: 22px;
+    }
+}
+
+.availableWallet {
+    margin-top: 13px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+.acc-body-up {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .acc-body-up-in {
+        width: 44%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        gap: 10px;
+        cursor: pointer;
+
+        img {
+            width: 65px;
+        }
+    }
+}
+
+// .currency-select {
+//     position: absolute;
+//     right: 0;
+// }
+
+.buyCryptoWalletbutton {
+    img {
+        top: 0;
+        position: absolute;
+        right: 25%;
+        width: 22px;
+        height: 100%;
+    }
+
+    select {
+        position: absolute;
+        border: none !important;
+        background: #0a1c20;
+        width: 80px;
+        right: 2% !important;
+    }
+}
+
+.buyCryptocenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .buyCryptocenter-in {
+        width: 88% !important;
+        height: 100%;
+        border-left: 1px solid grey;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        line-height: 2;
+
+        ion-label {
+            margin-left: 20px;
+            padding: 10px 0;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: -38px;
+                top: -6px;
+                border: none !important;
+            }
+        }
+    }
+}
+
+.buycrypto-box {
+    height: auto !important;
+    padding: 0 0 30px 0 !important;
+
+    .button-full {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button-full-in {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 20px;
+            border: 1px solid white;
+            border-radius: 20px;
+            margin-top: 25px;
+            cursor: pointer;
+
+            span {
+                font-family: Poppins;
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 36px;
+                text-align: center;
+
+            }
+        }
+    }
+}
+
+.Account {
+    table {
+        --max-width: 95% !important;
+        background-color: #0c2028 !important;
+
+        th,
+        td {
+            color: white;
+        }
+    }
+}
+
+.tableIn {
+    width: 85% !important;
+    height: auto;
+    overflow-x: scroll !important;
+    border: 2.5px solid;
+    border-image-source: linear-gradient(283.71deg, #045965 0.23%, #FFFFFF 99.77%);
+    border-image-slice: 1;
+
+    th,
+    td {
+        text-wrap: nowrap !important;
+        border-bottom: 2px solid #364549 !important;
+    }
+}
+
+.dangerColor {
+    color: red !important;
+}
+
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+@media screen and (max-width:600px) {
+    .account-box {
+        width: 95% !important;
+        height: auto !important;
+    }
+
+    .acc-body {
+        span {
+            width: 90%;
+        }
+    }
+
+    .acc-body-up-in {
+        width: 95% !important;
+    }
+
+    .availableWallet {
+        padding: 0 0 30px 0;
+    }
+
+    .walletbottom {
+        width: 95% !important;
+        margin-top: 20px !important;
+    }
+
+    .title {
+        font-size: 18px !important;
+    }
+}
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    width: 200px;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: grab;
+}
+
+.options {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.Create-In {
+    width: 90%;
+    height: 100%;
+    background: #1e3035;
+
+    .firstSection {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-top: 70px;
+        gap: 20px;
+        flex-wrap: wrap;
+        overflow: scroll;
+        height: -webkit-fill-available !important;
+        padding-bottom: 40px;
+
+        .firstSection-In {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .showNotConnect {
+            width: 200px;
+            height: 200px;
+            border: 1px solid white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .showOption {
+            width: 400px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            border: 1px solid white;
+            border-radius: 20px;
+
+            .showOptionTop {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-direction: column;
+
+                .showOption-in {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    img {
+                        cursor: pointer;
+                        width: 25px !important;
+                    }
+
+                    span {
+                        font-family: Poppins;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        text-align: left;
+
+                    }
+
+                    .rightSideImg {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 10px;
+                    }
+                }
+
+                .borrowButton {
+                    width: 80%;
+                    border: 1px solid #01CECE;
+                    border-radius: 10px;
+                    color: white;
+                    --background: #01CECE1A;
+                    --border: 3.5px solid;
+                    --border-image-source: linear-gradient(107.22deg, #FFFFFF 2.86%, #055965 100%);
+                }
+
+                .showOptionOutput {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: 20px;
+
+                    span {
+                        font-family: Poppins;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        text-align: left;
+                        color: #9B9797;
+                    }
+
+                    .showOptionOutput-in {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 10px;
+
+                        select {
+                            border: none !important;
+                            background: #1e3035;
+                            height: 32px;
+                            width: 40%;
+                        }
+
+                        ion-input {
+                            height: 32px;
+                            width: 60%;
+                            text-align: right;
+                            border-bottom: 1px solid grey;
+                        }
+                    }
+                }
+
+                .box-bottom-price {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                    font-family: Poppins;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    text-align: left;
+                    color: #0DADCA;
+                }
+            }
+
+            .showOptionBottom {
+                width: 99% !important;
+                border-top: 1px solid grey;
+                color: white;
+                text-align: center;
+                color: white;
+                --background: #0b242a;
+                --border-radius: 7px 3px 17px 19px;
+            }
+        }
+    }
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    width: fit-content;
+    margin: 0 auto;
+
+    button {
+        background-color: #3498db;
+        /* Blue */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        /* Slightly rounded corners */
+    }
+
+    button:hover {
+        background-color: #2980b9;
+        /* Darker blue on hover */
+    }
+}
+
+.button-container {
+    position: relative;
+    width: 230px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .choose {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        left: 0;
+        position: absolute;
+        top: 4px;
+
+        button {
+            padding: 3px 15px !important;
+            --box-radius: 23px;
+            border: 1px solid #FFFFFF;
+            background-color: #115667 !important;
+        }
+    }
+}
+
+.overview {
+
+    .title {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+    }
+
+    .overview-In {
+        width: 90%;
+        height: 90%;
+        overflow: scroll;
+
+        .overview-chart {
+            width: 100%;
+            height: 35%;
+            border: 1px solid #135f70;
+            border-radius: 20px;
+            background: #0d292f70;
+
+            .graph {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .overview-table {
+            width: 100%;
+            height: auto;
+
+            .overview-tableIn {
+                width: 100%;
+                height: 65%;
+                border: 1px solid #135f70;
+                border-radius: 20px;
+                background: #0d292f70;
+
+                .tableInside {
+                    overflow-x: scroll;
+                }
+            }
+        }
+    }
+}
+
+.profit {
+    color: #84FFF8 !important;
+}
+
+.graphTable {
+
+    tr,
+    td {
+        font-family: Sofia Sans;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+
+    }
+}
+
+
+
+
+
+
+
+.Move {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    cursor: move;
+}

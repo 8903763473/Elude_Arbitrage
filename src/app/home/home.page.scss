@@ -1,0 +1,319 @@
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  // align-items: center;
+  justify-content: flex-start;
+  margin-top: 70px !important;
+  background-image: url('../../assets/backgroundimage/dashboard.png') !important;
+  background-position: center center;
+  background-size: 101% 102%;
+  background-repeat: no-repeat;
+  background-color: #0e1a2b;
+  overflow: scroll;
+
+  content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+    flex-direction: column;
+    overflow: scroll;
+    margin-left: 80px;
+    margin-right: 80px;
+
+    .title {
+      font-family: Poppins;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 60px;
+      letter-spacing: 0.03em;
+      text-align: left;
+    }
+
+    .desc {
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.03em;
+      text-align: left;
+      width: 80%;
+      line-height: 2;
+    }
+
+    .dashview {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .dashview-left {
+        width: 50%;
+        padding-left: 40px;
+
+        ion-label {
+          font-family: Poppins;
+          font-size: 25px;
+          font-weight: 700;
+          line-height: 60px;
+          text-align: left;
+        }
+
+        span {
+          font-family: Poppins;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 60px;
+          text-align: left;
+        }
+
+        ion-button {
+          font-family: Poppins;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 60px;
+          text-align: left;
+          --background: #0D2026;
+          color: white !important;
+          border: 1.47px solid;
+          border-image-source: linear-gradient(90deg, #FFFFFF 0%, #045965 100%);
+          border-image-slice: 1;
+          --border-radius: 10px;
+          padding: 1px;
+        }
+
+        ion-label {
+          font-family: Poppins;
+          font-size: 32px;
+          font-weight: 700;
+          line-height: 60px;
+          text-align: left;
+
+          span {
+            font-family: Poppins;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 48px;
+            text-align: left;
+          }
+        }
+
+        p {
+          font-family: Poppins;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 48px;
+          text-align: left;
+        }
+      }
+
+      .dashview-right {
+        width: 50%;
+      }
+    }
+
+    .dollartocrypto {
+      li {
+        font-family: Sofia Sans;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 38.4px;
+        text-align: left;
+
+        span {
+          font-family: Sofia Sans;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 42px;
+          text-align: left;
+        }
+      }
+    }
+
+    .combine {
+      font-family: Poppins;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 67.5px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .combineImages {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap !important;
+      margin-top: 30px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .loan {
+      font-family: Poppins;
+      font-size: 35px;
+      font-weight: 300;
+      line-height: 60px;
+      letter-spacing: 0.03em;
+      text-align: left;
+    }
+
+    .loanList {
+      width: 90%;
+      line-height: 3;
+
+      li {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        letter-spacing: 0.03em;
+        text-align: left;
+
+        span {
+          font-family: Poppins;
+          font-size: 20px !important;
+          font-weight: 400;
+          line-height: 48px;
+          letter-spacing: 0.03em;
+          text-align: left;
+        }
+      }
+    }
+
+    .TransactionList {
+      width: 90%;
+      line-height: 3;
+
+      li {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        letter-spacing: 0.03em;
+        text-align: left;
+
+        span {
+          font-family: Poppins;
+          font-size: 20px !important;
+          font-weight: 400;
+          line-height: 48px;
+          letter-spacing: 0.03em;
+          text-align: left;
+        }
+      }
+    }
+
+    .gain {
+      font-family: Poppins;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 60px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      img {
+        width: 28px;
+      }
+    }
+
+
+    .beginner {
+      width: 100%;
+      height: 220px;
+      padding: 30px;
+      border: 1px solid grey;
+      border-radius: 20px;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+
+      span {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+        text-align: left;
+
+      }
+
+      .img {
+        position: absolute;
+        right: 25px;
+      }
+    }
+
+    .bottomFromBeginner {
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .beginner {
+        width: 100%;
+        height: 220px;
+        padding: 30px;
+        border: 1px solid grey;
+        border-radius: 20px;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        position: relative;
+
+        span {
+          font-family: Poppins;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 36px;
+          text-align: left;
+
+        }
+
+        .img {
+          position: absolute;
+          right: 25px;
+          top: 10px;
+          width: 40px;
+        }
+
+        .beginner-top {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 5px;
+
+          img {
+            width: 27px;
+          }
+
+          span {
+            width: 85% !important;
+          }
+        }
+      }
+
+    }
+  }
+}

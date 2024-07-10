@@ -1,0 +1,50 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SwapComponent } from './swap/swap.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'swap',
+    component: SwapComponent
+  },
+];
+
+
+@NgModule({
+  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent, SwapComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    DragDropModule,
+    RouterModule.forRoot(routes, { useHash: true }), MatButtonModule, MatTableModule, MatSortModule, MatMenuModule, MatExpansionModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync()],
+  bootstrap: [AppComponent],
+})
+export class AppModule { }

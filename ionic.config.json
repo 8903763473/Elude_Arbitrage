@@ -1,0 +1,7 @@
+{
+  "name": "Elude_Arbitrage",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

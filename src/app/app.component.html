@@ -1,0 +1,227 @@
+<ion-app>
+
+
+  <header class="header" *ngIf="AuthHeader">
+    <div class="logo">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Logo" style="border-radius: 50%;">
+      <!-- <span>Elude Arbitrage</span> -->
+    </div>
+    <nav>
+      <a>Home</a>
+      <a>LiveData</a>
+      <a>Create</a>
+      <a>Buy Crypto</a>
+    </nav>
+    <button mat-button [matMenuTriggerFor]="menu" class="mobileMenu MobileView mobileMenuIcon">
+      <i class="material-icons">menu</i>
+    </button>
+    <mat-menu #menu="matMenu" class="mobileMenu MobileView">
+      <button mat-menu-item class="option">
+        <i class="material-icons">trending_up</i>
+        <span>Market Opportunities</span>
+      </button>
+      <button mat-menu-item class="option">
+        <i class="material-icons">history</i>
+        <span>History</span>
+      </button>
+      <button mat-menu-item class="option">
+        <i class="material-icons">account_balance_wallet</i>
+        <span>Connect Wallet</span>
+      </button>
+      <button mat-menu-item>
+        <i class="material-icons">settings</i>
+        <span>Setting</span>
+      </button>
+      <button mat-menu-item>
+        <i class="material-icons">delete</i>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </header>
+
+  <header class="header1" *ngIf="dashboardHeader">
+    <div class="left">
+      <div class="logo">
+        <img
+          src="data:image/jpeg;base64,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"
+          alt="Logo">
+        <!-- <span>Elude Arbitrage</span> -->
+      </div>
+      <nav>
+        <a class="pointer">Market Opportunities</a>
+        <a class="pointer">History</a>
+      </nav>
+    </div>
+    <div class="actions">
+      <img class="user-avatar" src="../assets/images/user.png" alt="User Avatar">
+      <button class="wallet-button pointer" (click)="openAvailavleWallet()">
+        <span class="wallet-icon"></span>
+        Connect Wallet
+      </button>
+      <select class="currency-select pointer">
+        <option>Ethereum</option>
+        <option>Polygon</option>
+        <option>Arbitrum</option>
+        <option>Optimism</option>
+        <option>Avalanche</option>
+        <option>Metis</option>
+        <option>Base</option>
+        <option>Gnosis Chain</option>
+      </select>
+      <img src="../assets/icon/Setting.svg" alt="" class="icon pointer" (click)="iconAction('setting')">
+      <img src="../assets/icon/delete.svg" alt="" class="icon pointer" (click)="iconAction('delete')">
+    </div>
+    <div class="menu-icon pointer" (click)="toggleMenu()">
+      <img src="../assets/icon/menu.svg" alt="Menu Icon">
+    </div>
+
+    <select class="currency-select pointer MobileView">
+      <option>Ethereum</option>
+      <option>Bitcoin</option>
+      <option>Litecoin</option>
+    </select>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="mobileMenu MobileView mobileMenuIcon">
+      <i class="material-icons">menu</i>
+    </button>
+    <mat-menu #menu="matMenu" class="mobileMenu MobileView">
+      <button mat-menu-item class="option">
+        <i class="material-icons">trending_up</i>
+        <span>Market Opportunities</span>
+      </button>
+      <button mat-menu-item class="option">
+        <i class="material-icons">history</i>
+        <span>History</span>
+      </button>
+      <button mat-menu-item class="option">
+        <i class="material-icons">account_balance_wallet</i>
+        <span>Connect Wallet</span>
+      </button>
+      <button mat-menu-item>
+        <i class="material-icons">settings</i>
+        <span>Setting</span>
+      </button>
+      <button mat-menu-item>
+        <i class="material-icons">delete</i>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+
+  </header>
+
+  <!-- **************************************************POPUP 01******************************************** -->
+
+  <div *ngIf="deleteAll" class="popup2 popupBackground" style="width: 100%;
+  height: 100%;
+  top: 70px;
+  position: fixed;
+  z-index: 100;">
+    <div class="modal-box">
+      <ion-label class="text-white"><img src="../../assets/icon/delete.svg" alt=""> Delete</ion-label><br>
+      <ion-label class="text-white">Delete all Cubes <img src="../../assets/icon/question.svg" alt=""></ion-label><br>
+      <div class="buttons" style="margin: 0 !important;">
+        <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;" (click)="deleteAction()">
+          <img src="../../assets/icon/tick.svg" alt="">&nbsp;Cancel
+        </ion-button>
+        <ion-button style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;"
+          (click)="deleteAction()">
+          <img src="../../assets/icon/close.svg" alt="">&nbsp;Delete
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- **************************************************POPUP 02******************************************** -->
+
+  <div *ngIf="TransactionSetting" class="popup2 popupBackground">
+    <div class="modal-box">
+      <ion-label class="transactionSettingTitle text-white" style="width: 100%;display: flex;align-items: center;justify-content: center;gap: 60px;font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        "><img src="../../assets/icon/Setting.svg" alt=""> Transaction Setting <img
+          src="../../assets/icon/close-line.svg" alt="" style="cursor: pointer;"
+          (click)="SettingAction()"></ion-label><br>
+      <ion-label style="font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        " class="slippage text-white">Slippage Tolerance</ion-label><br>
+      <div class="buttons" style="margin: 0 !important;">
+        <ion-button style="--background: #1D8686;box-shadow: 0px 1px 4px 0px #FFF8F840;">
+          Auto 3%
+        </ion-button>
+        <ion-button style="--background: #D9D9D9;box-shadow: 0px 1px 4px 0px #FFF8F840;color: #FF0000 !important;">
+          Custom
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- **************************************************POPUP 03******************************************** -->
+
+  <div *ngIf="availableWallet" class="Account popupBackground">
+    <div class="account-box">
+      <div class="account-box-top" style="width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;">
+        <ion-label style="justify-content: space-between !important;width: 90%;" class="text-white">Available Wallets
+          (4) <img src="../../assets/icon/close-line.svg" alt="" (click)="availableWallet=false"
+            style="cursor: pointer;"></ion-label>
+      </div>
+      <img src="../../assets/icon/acc-line.svg" alt="">
+
+      <div class="acc-body availableWallet">
+
+        <div class="acc-body-up">
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/walletconnect.svg" alt="">
+            <ion-label class=" text-white">Wallet Connect</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/coinbasewallet.svg" alt="">
+            <ion-label class=" text-white">Coinbase Wallet</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/noSignal.svg" alt="">
+            <ion-label class=" text-white">Wallet Connect</ion-label>
+          </div>
+          <div class="acc-body-up-in" (click)="AvailavleWallet()">
+            <img src="../../assets/icon/bluetooth.svg" alt="">
+            <ion-label class=" text-white">Coinbase Wallet</ion-label>
+          </div>
+        </div>
+
+
+
+        <span class="walletbottom text-white">why don’t see my wallet ?<br>
+          <p class=" text-white">click here to learn more</p>
+          <img src="../../assets/icon/exclamatory.svg" alt="">
+        </span>
+      </div>
+
+
+    </div>
+  </div>
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <footer class="footer" *ngIf="Footer">
+    <div class="col-md-9 d-flex justify-content-end container">
+      <img src="../assets/images/temp-logo.jpeg" alt="Company Logo" style="width: 46px;
+height: 46px;">
+      <a class="footer-link"><img src="../assets/icon/User Lock.svg" alt=""> Privacy &
+        Policy</a>
+      <a class="footer-link"><img src="../assets/icon/Terms.svg" alt="">Terms &
+        Conditions</a>
+      <a class="footer-link"><img src="../assets/icon/help.svg" alt="">Help
+        Center</a>
+    </div>
+  </footer>
+
+</ion-app>
