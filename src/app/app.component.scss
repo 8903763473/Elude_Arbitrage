@@ -540,3 +540,90 @@ header {
         }
     }
 }
+
+.buyCryptoWalletbutton {
+    img {
+        top: 0;
+        position: absolute;
+        right: 25%;
+        width: 22px;
+        height: 100%;
+    }
+
+    select {
+        position: absolute;
+        border: none !important;
+        background: #0a1c20;
+        width: 84px;
+        right: 2% !important;
+    }
+}
+
+.buyCryptocenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .buyCryptocenter-in {
+        width: 88% !important;
+        height: 100%;
+        border-left: 1px solid grey;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        line-height: 2;
+
+        ion-label {
+            margin-left: 20px;
+            padding: 10px 0;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: -38px;
+                top: -6px;
+                border: none !important;
+            }
+        }
+    }
+}
+
+.buycrypto-box {
+    height: auto !important;
+    padding: 0 0 30px 0 !important;
+
+    .button-full {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button-full-in {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+            margin-top: 25px;
+            cursor: pointer;
+            background: #15474f;
+
+            span {
+                font-family: Poppins;
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 36px;
+                text-align: center;
+
+            }
+        }
+    }
+}

@@ -47,14 +47,28 @@ export class AppComponent {
   iconAction(data: any) {
     if (data == 'setting') {
       this.availableWallet = false;
-      this.TransactionSetting = true;
       this.deleteAll = false;
-    } else {
+      this.Buycrypto = false
+      this.TransactionSetting = true;
+    } else if (data == 'delete') {
       this.availableWallet = false;
       this.TransactionSetting = false;
+      this.Buycrypto = false
       this.deleteAll = true;
+    } else if (data == 'buy') {
+      this.availableWallet = false;
+      this.TransactionSetting = false;
+      this.deleteAll = false;
+      this.Buycrypto = true
+    } else {
+      this.TransactionSetting = false;
+      this.deleteAll = false;
+      this.Buycrypto = false;
+      this.availableWallet = true;
     }
   }
+
+
 
   AvailavleWallet() {
     this.availableWallet = false;

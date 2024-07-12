@@ -179,23 +179,27 @@ export class DashboardComponent implements OnInit {
   categories = [
     {
       label: 'Utility',
+      border: '1px solid rgb(181 7 90)',
       options: ['Send Token', 'Multi Send', 'Wrapped Native Token', 'Add Fund', 'Return Fund']
     },
     {
       label: 'Uniswap V3',
+      border: '1px solid #999999',
       options: ['Swap Token', 'Multi Swap']
     },
     {
       label: 'Aave V3',
+      border: '1px solid #0684F8',
       options: ['Supply Token', 'Withdraw', 'Borrow', 'Repay', 'Flashloan']
     },
     {
       label: 'Aave V2',
+      border: '1px solid green',
       options: ['Deposit', 'Withdraw', 'Borrow', 'Repay', 'Flashloan']
     }
   ];
 
-  @ViewChild('chartLine', { static: true }) chartLine: ElementRef | any;
+  @ViewChild('chartLine') chartLine?: ElementRef<HTMLCanvasElement> | any;
 
   TabledisplayedColumns: string[] = ['walletAddress', 'plan', 'subscriptionDate', 'transactionRun', 'totalProfit'];
   TabledataSource = new MatTableDataSource(this.tableData);
@@ -204,92 +208,26 @@ export class DashboardComponent implements OnInit {
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  // *************************************************TEMPLATE****************************************
-
-
-  @ViewChild('boxTemplate', { static: true }) boxTemplate!: TemplateRef<any>;
-  @ViewChild('boxContainer', { read: ViewContainerRef }) boxContainer!: ViewContainerRef;
-
-  @ViewChild('boxTemplate', { static: true }) v2Borrow!: TemplateRef<any>;
-  @ViewChild('boxContainer', { read: ViewContainerRef }) v2BorrowContainer!: ViewContainerRef;
-
-
   selectedOptions: any = []
-  private hasView = false;
   avaliablealletPickedOption: any;
 
   @ViewChildren('box') boxes: QueryList<ElementRef> | any;
 
-  constructor(public router: Router, public app: AppComponent, private _liveAnnouncer: LiveAnnouncer) {
-    this.getLocalData()
-  }
+  constructor(public router: Router, public app: AppComponent, private _liveAnnouncer: LiveAnnouncer) { }
 
   ngOnInit() {
+    this.graphSection = true
     this.app.Footer = false;
     this.selectedOptions = []
     this.app.dashboardHeader = true;
     this.app.AuthHeader = false;
-    localStorage.setItem('clickedIcon', '')
-  }
-
-  getLocalData() {
-    // const Setting: any = localStorage.getItem('clickedIcon');
-    // if (Setting == 'deleteAll') {
-    //   this.deleteAll = true;
-    // } else if (Setting == 'TransactionSetting') {
-    //   this.TransactionSetting = true;
-    // }
-    // setTimeout(() => {
-    //   this.getLocalData()
-    // }, 1000)
   }
 
   ngAfterViewInit() {
     if (this.sort) {
       this.dataSource.sort = this.sort;
     }
-    // this.createLineChart();
-    setTimeout(() => {
-      this.initJsPlumb();
-    }, 0);
-  }
-
-  ngAfterViewChecked() {
-    if (this.create && !this.hasView) {
-      this.createBox();
-      this.hasView = true;
-    }
-  }
-
-  initJsPlumb() {
-    const instance: any = jsPlumb.getInstance();
-
-    instance.ready(() => {
-      const common = {
-        connector: 'Straight',
-        endpoint: 'Dot',
-        anchor: 'AutoDefault',
-        paintStyle: { stroke: 'gray', strokeWidth: 2 }
-      };
-
-      this.selectedOptions.forEach((box: ElementRef, index: number) => {
-        const currentId = `box${index}`;
-        box.nativeElement.setAttribute('id', currentId);
-
-        instance.draggable(box.nativeElement, {
-          containment: 'parent' // Optionally limit dragging within parent container
-        });
-
-        if (index > 0) {
-          const previousId = `box${index - 1}`;
-          instance.connect({
-            source: previousId,
-            target: currentId,
-            ...common
-          });
-        }
-      });
-    });
+    this.createLineChart();
   }
 
   OpenPopup() {
@@ -304,90 +242,93 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  createBox(): void {
-    if (this.boxTemplate && this.boxContainer) {
-      const view: any = this.boxContainer.createEmbeddedView(this.boxTemplate);
-      this.boxes.push(view);
-      console.log('Box created. Total boxes:', this.boxes.length);
-    } else {
-      console.error('Box template or container is not available.');
-    }
-  }
+  // createBox(): void {
+  //   if (this.boxTemplate && this.boxContainer) {
+  //     const view: any = this.boxContainer.createEmbeddedView(this.boxTemplate);
+  //     this.boxes.push(view);
+  //     console.log('Box created. Total boxes:', this.boxes.length);
+  //   } else {
+  //     console.error('Box template or container is not available.');
+  //   }
+  // }
 
   createLineChart(): void {
-    const ctx1 = this.chartLine.nativeElement.getContext('2d');
+    const ctx1: any = this.chartLine.nativeElement.getContext('2d');
+    if (ctx1) {
+      const gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+      gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+      gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+      gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
 
-    const gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
-
-    new Chart(ctx1, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Income',
-          tension: 0.4,
-          borderWidth: 3, // Set a border width for the line
-          pointRadius: 0,
-          borderColor: '#FFF',
-          backgroundColor: gradientStroke1,
-          data: [450, 300, 400, 350, 600, 450, 200, 300, 200, 550, 290, 450]
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false
-          }
+      new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Income',
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 0,
+            borderColor: '#FFF',
+            backgroundColor: gradientStroke1,
+            data: [450, 300, 400, 350, 600, 450, 200, 300, 200, 550, 290, 450]
+          }]
         },
-        interaction: {
-          intersect: false,
-          mode: 'index'
-        },
-        scales: {
-          y: {
-            grid: {
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#fbfbfb',
-              font: {
-                size: 11,
-                family: 'Open Sans',
-                style: 'normal',
-                lineHeight: 2
-              }
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
             }
           },
-          x: {
-            grid: {
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false
+          interaction: {
+            intersect: false,
+            mode: 'index'
+          },
+          scales: {
+            y: {
+              grid: {
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#fbfbfb',
+                font: {
+                  size: 11,
+                  family: 'Open Sans',
+                  style: 'normal',
+                  lineHeight: 2
+                }
+              }
             },
-            ticks: {
-              display: true,
-              color: '#ccc',
-              padding: 20,
-              font: {
-                size: 11,
-                family: 'Open Sans',
-                style: 'normal',
-                lineHeight: 2
+            x: {
+              grid: {
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false
+              },
+              ticks: {
+                display: true,
+                color: '#ccc',
+                padding: 20,
+                font: {
+                  size: 11,
+                  family: 'Open Sans',
+                  style: 'normal',
+                  lineHeight: 2
+                }
               }
             }
           }
         }
-      }
-    });
+      });
+    } else {
+      console.error('Unable to get context for canvas');
+    }
   }
 
   afterChoosed(label: string, option: string) {

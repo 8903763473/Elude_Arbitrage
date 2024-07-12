@@ -113,9 +113,37 @@ p {
 }
 
 
+@media screen and (max-width:900px) {
+    .showNotConnect {
+        height: auto !important;
+        left: 150px !important;
+        top: 78px !important;
+        border-radius: 7px !important;
+        flex-direction: row !important;
+        background: #143941 !important;
+        padding: 0 0 0 13px;
+        z-index: 10;
+
+        img {
+            width: 35px !important;
+        }
+    }
+
+    .firstSection {
+        width: 95% !important;
+        margin-top: 90px !important;
+
+        // .firstSection-In {
+        //     margin-top: 90px !important;
+        // }
+    }
+}
+
+
+
 @media screen and (max-width: 600px) {
     .wallet-container {
-        width: 65% !important;
+        width: 75% !important;
     }
 
     .Decomba {
@@ -669,6 +697,22 @@ th.mat-sort-header-sorted {
 }
 
 
+
+.showNotConnect {
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    left: 25px;
+    top: 200px;
+}
+
 .Create-In {
     width: 90%;
     height: 100%;
@@ -679,7 +723,7 @@ th.mat-sort-header-sorted {
         display: flex;
         align-items: flex-start;
         justify-content: flex-end;
-        margin-top: 70px;
+        // margin-top: 70px;
         gap: 20px;
         flex-wrap: wrap;
         overflow: scroll;
@@ -693,19 +737,8 @@ th.mat-sort-header-sorted {
             align-items: center;
             justify-content: flex-end;
             flex-wrap: wrap;
-            gap: 50px;
-        }
-
-        .showNotConnect {
-            width: 200px;
-            height: 200px;
-            border: 1px solid white;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
-            gap: 20px;
+            gap: 50px;
         }
 
         .showOption {
@@ -955,17 +988,176 @@ th.mat-sort-header-sorted {
     }
 }
 
-
-
-
-
+.w-100 {
+    width: 100% !important;
+}
 
 
 .Move {
     border: 1px solid #ccc;
-    padding: 10px;
     margin: 10px;
     width: 200px;
     text-align: center;
     cursor: move;
+}
+
+
+.drop-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.drag-item {
+    // margin-bottom: 10px;
+    // transition: transform 0.3s ease, box-shadow 0.3s ease;
+    // will-change: transform, box-shadow;
+}
+
+.cdk-drag-preview {
+
+    .conectionLine {
+        opacity: 0 !important;
+        display: none !important;
+    }
+
+
+    // opacity: 1;
+
+    .showOption {
+        width: 400px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        border: 1px solid white;
+        border-radius: 20px;
+
+        .showOptionTop {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: column;
+
+            .showOption-in {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                img {
+                    cursor: pointer;
+                    width: 25px !important;
+                }
+
+                span {
+                    font-family: Poppins;
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    text-align: left;
+
+                }
+
+                .rightSideImg {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+            }
+
+            .borrowButton {
+                width: 80%;
+                border: 1px solid #01CECE;
+                border-radius: 10px;
+                color: white;
+                --background: #01CECE1A;
+                --border: 3.5px solid;
+                --border-image-source: linear-gradient(107.22deg, #FFFFFF 2.86%, #055965 100%);
+            }
+
+            .showOptionOutput {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+
+                span {
+                    font-family: Poppins;
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    text-align: left;
+                    color: #9B9797;
+                }
+
+                .showOptionOutput-in {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+
+                    select {
+                        border: none !important;
+                        background: #1e3035;
+                        height: 32px;
+                        width: 40%;
+                    }
+
+                    ion-input {
+                        height: 32px;
+                        width: 60%;
+                        text-align: right;
+                        border-bottom: 1px solid grey;
+                    }
+                }
+            }
+
+            .box-bottom-price {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 10px;
+                font-family: Poppins;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                text-align: left;
+                color: #0DADCA;
+            }
+        }
+
+        .showOptionBottom {
+            width: 99% !important;
+            border-top: 1px solid grey;
+            color: white;
+            text-align: center;
+            color: white;
+            --background: #0b242a;
+            --border-radius: 7px 3px 17px 19px;
+        }
+    }
+
+    .showNotConnect {
+        display: none !important;
+    }
+}
+
+.cdk-drag-dragging {
+    .Move {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+
+.cdk-drag-animating {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

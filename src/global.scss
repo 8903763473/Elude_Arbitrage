@@ -70,6 +70,7 @@ $app-theme: mat.define-theme((color: (theme-type: light,
 
 body {
   font-family: Poppins !important;
+  user-select: none !important;
 }
 
 .pointer {
@@ -108,4 +109,10 @@ body {
 
 .popupBackground {
   background-color: rgba(12, 20, 27, 0.72) !important;
+}
+
+.radientborder {
+  // border: 3.5px solid !important;
+  // border-image-source: linear-gradient(129.76deg, #FFFFFF 0.05%, #055965 100.05%) !important;
+  // border-image-slice: 1 !important;
 }
